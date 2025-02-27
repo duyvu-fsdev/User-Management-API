@@ -1,13 +1,11 @@
 import dotenv from "dotenv";
-import { Request, Response, Router } from "express";
+import { Request, Response } from "express";
 import nodemailer from "nodemailer";
+import redisClient from "../config/redisClient";
 import { User } from "../db/models";
 import { generateOtp, passwordHelper, resHelper, tokenHelper } from "../utils";
-import redisClient from "../redisClient";
 
 dotenv.config();
-
-const router = Router();
 
 const getOtp = async (req: Request, res: Response): Promise<Response> => {
   try {
